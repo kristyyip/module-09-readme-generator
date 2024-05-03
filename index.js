@@ -30,7 +30,7 @@ const questions = [
         message: "What kind of license should your project have?",
         name: "license",
         // list most popular licenses src:  https://muratkaragozgil.medium.com/software-licenses-on-github-which-one-should-you-choose-3d4cfbb6c2f9#:~:text=The%20most%20popular%20software%20license,Apache%20License%202.0
-        choices: ["Apache", "BSD 3", "GNU GPL v3", "MIT", "Mozilla"]
+        choices: ["Apache 2.0", "BSD 3-Clause", "GNU GPL v3", "MIT", "Mozilla Public License 2.0 ", "None"]
     },
     {
         type: "input",
