@@ -1,6 +1,24 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+function renderLicenseBadge(license) {
+  if (license) {
+    let licenseStr = ""
+    // license badges: https://gist.github.com/kofiav/c1059e1075b67582e86b07aa9759e20d
+    if (license === "Apache") {
+      licenseStr = "Apache%202.0-blue";
+    } else if (license === "BSD 3") {
+      licenseStr = "BSD%203--Clause-blue";
+    } else if (license === "GNU GPL v3") {
+      licenseStr = "GPL%20v3-blue";
+    } else  if (license === "MIT") {
+      licenseStr = "MIT-yellow";
+    } else  {
+      licenseStr = "MPL%202.0-brightgreen";
+    }
+
+    return badge = `[License: ${license}]https://img.shields.io/badge/License-${licenseStr}.svg`;
+
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
