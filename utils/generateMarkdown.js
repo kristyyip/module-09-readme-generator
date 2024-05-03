@@ -61,16 +61,54 @@ function renderLicenseSection(license) {
     return ""
   } else {
     return `## License
-    This project is licensed under the ${license} license.
-    ${renderLicenseBadge(license)}`
+    This project is licensed under the ${license} license.`
   }
 
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+  return `# ${data.projName}
+  ${renderLicenseBadge(data.license)}
 
+  ## Description
+  ${data.desc}
+
+  ## Table of Contents
+  * [Installation](#installation)
+
+  * [Usage](#usage)
+
+  * [License](#license)
+
+  * [Contributing](#contributing)
+
+  * [Tests](#tests)
+
+  * [Questions](#questions)
+
+  ## Installation
+  To install necessary dependencies, run the following command:
+  \`\`\`
+  ${data.installation}
+  \`\`\`
+
+  ## Usage
+  ${data.usage}
+
+  ${renderLicenseSection(data.license)};
+
+  ## Contributing
+  ${data.contributing}
+
+  ## Tests
+  To run tests, run the following command
+  \`\`\`
+  ${data.tests}
+  \`\`\`
+
+  ## Questions
+  If you any questions about the repo, open an issue or contant me directly at ${data.email}. You can find more of my work at [${data.user}](https://github.com/${data.user}).
 `;
 }
 
