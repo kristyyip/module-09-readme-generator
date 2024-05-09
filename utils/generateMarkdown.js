@@ -1,4 +1,4 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
+// a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
   if (license) {
@@ -6,6 +6,7 @@ function renderLicenseBadge(license) {
     if (license === "None") {
       return ""
     } else {
+      // need to adapt license to url format
       let licenseStr = ""
 
       // license badges: https://gist.github.com/kofiav/c1059e1075b67582e86b07aa9759e20d
@@ -21,6 +22,7 @@ function renderLicenseBadge(license) {
         licenseStr = "MPL%202.0-brightgreen";
       }
 
+      // create markdown of badge
       const badge = `[![License: ${license}](https://img.shields.io/badge/License-${licenseStr}.svg)](${renderLicenseLink(license)})`;
       
       return badge;
@@ -28,7 +30,7 @@ function renderLicenseBadge(license) {
   }
 }
 
-// TODO: Create a function that returns the license link
+// a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
 
@@ -37,6 +39,7 @@ function renderLicenseLink(license) {
   // if there is no license, return an empty string
   if (license === "None") {
     return link;
+  // otherwise, create link
   } else {
     // GNU GPL v3 uses a different base link
     if (license === "GNU GPL v3") {
@@ -58,11 +61,13 @@ function renderLicenseLink(license) {
   }
 }
 
-// TODO: Create a function that returns the license section of README
+// a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
+  // if there is no license, return an empty string
   if (license === "None") {
     return ""
+    // otherwise return markdown of license section
   } else {
     const section = `## License
 This project is licensed under the ${license} license.`;
@@ -72,7 +77,7 @@ This project is licensed under the ${license} license.`;
 
 }
 
-// TODO: Create a function to generate markdown for README
+// a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.projName}
   ${renderLicenseBadge(data.license)}
