@@ -21,7 +21,7 @@ function renderLicenseBadge(license) {
         licenseStr = "MPL%202.0-brightgreen";
       }
 
-      const badge = `[![License: ${license}]https://img.shields.io/badge/License-${licenseStr}.svg](${renderLicenseLink(license)})`;
+      const badge = `[![License: ${license}](https://img.shields.io/badge/License-${licenseStr}.svg)](${renderLicenseLink(license)})`;
       
       return badge;
     }
@@ -31,23 +31,27 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  // replace spaces in license with a dash
-  license.replace(" ", "-");
+
+  let link = ""
 
   // if there is no license, return an empty string
   if (license === "None") {
-    return ""
+    return link;
   } else {
     // GNU GPL v3 uses a different base link
     if (license === "GNU GPL v3") {
-      const link = "https://www.gnu.org/licenses/gpl-3.0";
+      link = "https://www.gnu.org/licenses/gpl-3.0";
     } else {
       // format mozilla license correctly
       if (license === "Mozilla Public License 2.0") {
         license = "MPL-2.0";
+      } else {
+        // replace spaces in license with a dash
+        // src: https://stackoverflow.com/questions/1983648/replace-spaces-with-dashes-and-make-all-letters-lower-case
+        license = license.replace(/\s+/g, "-");
       }
 
-      link = `https://opensource.org/licenses/${license}`;
+      link = `https://opensource.org/license/${license}`;
     }
 
     return link;
@@ -60,8 +64,10 @@ function renderLicenseSection(license) {
   if (license === "None") {
     return ""
   } else {
-    return `## License
-    This project is licensed under the ${license} license.`
+    const section = `## License
+This project is licensed under the ${license} license.`;
+    
+    return section;
   }
 
 }
@@ -96,7 +102,7 @@ function generateMarkdown(data) {
   ## Usage
   ${data.usage}
 
-  ${renderLicenseSection(data.license)};
+  ${renderLicenseSection(data.license)}
 
   ## Contributing
   ${data.contributing}
